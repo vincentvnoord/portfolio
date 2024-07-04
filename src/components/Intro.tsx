@@ -42,13 +42,13 @@ export const IntroText = () => {
     return (
         <div className="cursor-default">
             <div className="flex w-full items-end">
-                <p className={smallStyle}>I'm a</p>
+                <p className={smallStyle}>I&apos;m a</p>
                 <p className={bigStyle}>FULL-STACK</p>
             </div>
 
             <div className="flex w-full justify-end items-end">
                 <p className={bigStyle}>DEVELOPER</p>
-                <p className={smallStyle}>&</p>
+                <p className={smallStyle}>{"&"}</p>
             </div>
 
             <p className={bigStyle}>SOFTWARE ENGINEER</p>

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { easeIn, easeInOut, motion } from "framer-motion";
+import Link from "next/link";
 
 export const CardContainer = () => {
     const [selectedCardIndex, setSelectedCardIndex] = useState(0);
@@ -28,7 +29,7 @@ export const CardContainer = () => {
     }, []);
 
     return (
-        <div className="h-full w-full grid grid-rows-2 lg:grid-cols-2 p-12 gap-8">
+        <motion.div className="h-full w-full grid grid-rows-2 lg:grid-cols-2 p-12 gap-8">
             <HomeCard
                 title="PROJECTEN"
                 className="row-span-2"
@@ -74,22 +75,26 @@ export const CardContainer = () => {
                     <p className="font-bold">Vraag een gratis ontwerp aan!</p>
                 </div>
             </HomeCard>
-            <HomeCard
-                title="CONTACT"
-                color="bg-yellow-300"
-                index={2}
-                selected={selectedCardIndex}
-                setSelectedCard={setSelectedCardIndex}
-                startInterval={startInterval}
-                stopInterval={clearExistingInterval}
-            >
-                <div className="flex flex-col h-full p-2 pt-3">
-                    <p className="text-xl font-light">
-                        Voor als je mogelijkheden wil bespreken of gewoon een vraag hebt, ik sta altijd open voor een gesprek!
-                    </p>
-                </div>
-            </HomeCard>
-        </div>
+
+            <Link href="contact">
+                <HomeCard
+                    title="CONTACT"
+                    color="bg-yellow-300"
+                    index={2}
+                    selected={selectedCardIndex}
+                    setSelectedCard={setSelectedCardIndex}
+                    startInterval={startInterval}
+                    stopInterval={clearExistingInterval}
+                >
+                    <div className="flex flex-col h-full p-2 pt-3">
+                        <p className="text-xl font-light">
+                            Voor als je mogelijkheden wil bespreken of gewoon een vraag hebt, ik sta altijd open voor een gesprek!
+                        </p>
+                    </div>
+                </HomeCard>
+            </Link>
+            
+        </motion.div>
     )
 }
 
@@ -121,7 +126,7 @@ const transition = {
 
 export const HomeCard = ({ title, className, color, index, selected, setSelectedCard, startInterval, stopInterval, children }: HomeCardProps) => {
     const isSelected = selected === index;
-    const defaultStyles = `p-3 overflow-hidden flex flex-col cursor-pointer transition-all duration-200 ease-in-out rounded-3xl`;
+    const defaultStyles = `p-3 h-full overflow-hidden flex flex-col cursor-pointer transition-all duration-200 ease-in-out rounded-3xl`;
     const colorStyle = color ? color : "bg-white";
 
     const onMouseEnter = () => {
@@ -163,7 +168,7 @@ const CardContentAnimation = ({ children, selected }: { children: React.ReactNod
     }
 
     return (
-        <motion.div animate={selected ? variants.selected : variants.default} transition={{duration: .5, type: "spring"}} initial="default" >
+        <motion.div animate={selected ? variants.selected : variants.default} transition={{ duration: .5, type: "spring" }} initial="default" >
             {children}
         </motion.div>
     )

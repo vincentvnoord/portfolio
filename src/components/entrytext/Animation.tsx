@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useAnimation, motion, AnimationControls } from "framer-motion";
-import { fadeInAnimation } from "./Helper";
 
 export const EntryTextAnimation = ({ setTextVisible }: { setTextVisible: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const rotationAnim = useAnimation();

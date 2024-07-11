@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Josefin_Slab, M_PLUS_1 } from "next/font/google";
 import "./globals.css";
-import { ColorPaletteHelper } from "@/components/ColorPaletteHelper";
 import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });

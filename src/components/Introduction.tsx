@@ -26,7 +26,7 @@ export const Introduction = ({ scrollYProgress }: { scrollYProgress: MotionValue
                 className="shadow-xl"
             >
                 <div className="w-full z-20 relative md:text-center flex flex-col justify-center items-center gap-3 max-w-screen-sm lg:max-w-screen-md p-2 md:p-9">
-                    <p className="text-2xl md:text-4xl">Hi I'm Vincent. Nice to meet you.</p>
+                    <p className="text-2xl md:text-4xl">Hi I&apos;m Vincent. Nice to meet you.</p>
                     <p className="text-sm lg:text-xl opacity-80">
                         I started my programming journey in 2018, initially in game development.
                         This was fun, but not fulfilling.

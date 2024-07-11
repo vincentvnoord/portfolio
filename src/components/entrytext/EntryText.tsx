@@ -4,7 +4,6 @@ import { Nixie_One } from "next/font/google";
 import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, AnimationControls, motion, useAnimation, } from "framer-motion";
 import { EntryTextAnimation } from "./Animation";
-import { fadeInAnimation } from "./Helper";
 import { ShinyButton } from "../ShinyButton";
 
 const nixie = Nixie_One({

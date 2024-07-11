@@ -1,11 +1,11 @@
-import { AuroraHero } from "@/components/AuroraHero";
+import { HeroBackground } from "@/components/HeroBackground";
 
 export default function ContactPage() {
 
     return (
         <div>
             <h1>Contact</h1>
-            <AuroraHero />
+            <HeroBackground />
         </div>
     )
 };

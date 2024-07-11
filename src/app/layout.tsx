@@ -20,8 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={mplus1.className + " min-h-dvh bg-background"}>
-        <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+      <body className={inter.className + " min-h-dvh bg-background"}>
+        <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
         </ThemeProvider>
       </body>

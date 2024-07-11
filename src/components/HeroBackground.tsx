@@ -2,7 +2,7 @@
 import { motion, useAnimation, useMotionValue, useScroll, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export const AuroraHero = () => {
+export const HeroBackground = () => {
     const curScroll = useScroll();
     const controls = useAnimation();
     const cursorSize = 384;
@@ -19,7 +19,7 @@ export const AuroraHero = () => {
     useEffect(() => {
         const updateMousePosition = (ev: MouseEvent) => {
             const x = ev.clientX;
-            const y = ev.clientY + curScroll.scrollYProgress.get() * window.innerHeight;
+            const y = ev.clientY + curScroll.scrollYProgress.get() * window.outerHeight;
             mouse.x.set(x - cursorSize / 2);
             mouse.y.set(y - cursorSize / 2);
         };
@@ -32,21 +32,22 @@ export const AuroraHero = () => {
     }, []);
 
     return (
-        <div className="absolute blur-2xl min-w-full min-h-screen bg-background pointer-events-none">
+        <div className="absolute blur-2xl min-w-full min-h-full bg-background pointer-events-none">
             <motion.div
                 initial={{ opacity: 1 }}
                 animate={{
                     opacity: 1
                 }}
-                className="z-0 big-radial absolute min-h-full w-full place-content-center pointer-events-none overflow-hidden">
-                <motion.div
-                    initial={{ scale: 0.5 }}
-                    style={{ left: smoothMouse.x, top: smoothMouse.y }}
-                    className="absolute origin-center flex justify-center items-center">
-                    <div
-                        className="relative origin-center w-96 h-96 bg-background rounded-full scale-125"
-                    ></div>
-                </motion.div>
+                className="big-radial absolute min-h-full w-full place-content-center pointer-events-none">
+            </motion.div>
+
+            <motion.div
+                initial={{ scale: 0.7, opacity: 0.5 }}
+                style={{ left: smoothMouse.x, top: smoothMouse.y }}
+                className="absolute blur-3xl origin-center flex justify-center items-center">
+                <div
+                    className="relative z-80 origin-center w-96 h-96 bg-primary rounded-full"
+                ></div>
             </motion.div>
         </div>
     )

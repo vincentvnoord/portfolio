@@ -34,7 +34,7 @@ export const HeroBackground = () => {
     return (
         <div className="absolute blur-2xl min-w-full min-h-full bg-background pointer-events-none">
             <motion.div
-                initial={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
                 animate={{
                     opacity: 1
                 }}
@@ -42,7 +42,8 @@ export const HeroBackground = () => {
             </motion.div>
 
             <motion.div
-                initial={{ scale: 0.7, opacity: 0.5 }}
+                initial={{ scale: 0.7, opacity: 0 }}
+                animate={{ opacity: 0.5 }}
                 style={{ left: smoothMouse.x, top: smoothMouse.y }}
                 className="absolute blur-3xl origin-center flex justify-center items-center">
                 <div

@@ -1,6 +1,6 @@
 import { motion, useAnimation } from "framer-motion"
 
-export const ShinyButton = ({ title }: { title: string }) => {
+export const ShinyButton = ({ title, className, onClick }: { title: string, className?: string, onClick?: () => void }) => {
     const parentAnim = useAnimation();
     const childAnim = useAnimation();
     const textAnim = useAnimation();
@@ -63,8 +63,9 @@ export const ShinyButton = ({ title }: { title: string }) => {
         <motion.button
             onHoverStart={handleHover}
             onMouseLeave={handleLeave}
+            onClick={onClick}
             animate={parentAnim}
-            className="relative hover:cursor-pointer border-2 border-primary rounded-full p-3 flex items-center overflow-hidden">
+            className={`relative hover:cursor-pointer border-2 border-primary rounded-full p-3 flex items-center overflow-hidden ${className}`}>
 
             <motion.span
                 initial={{ opacity: 1 }}

@@ -2,7 +2,7 @@
 
 import { ColorfulContainer } from "./ColorContainer";
 import { Introduction } from "./Introduction";
-import Projects from "./Projects";
+import Projects from "./projects/Projects";
 import { TechStack } from "./TechStack/TechStack";
 import { useScroll } from "framer-motion";
 import React, { useRef } from "react";

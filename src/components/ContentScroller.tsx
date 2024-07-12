@@ -1,6 +1,7 @@
 "use client";
 
 import { ColorfulContainer } from "./ColorContainer";
+import ContactForm from "./contact/Contact";
 import { Introduction } from "./Introduction";
 import Projects from "./projects/Projects";
 import { TechStack } from "./TechStack/TechStack";
@@ -29,6 +30,10 @@ const ContentScroller = () => {
                 <Section>
                     <Projects scrollYProgress={scrollYProgress} />
                 </Section>
+
+                <Section>
+                    <ContactForm scrollYProgress={scrollYProgress} />
+                </Section>
             </div>
         </div>
     )
@@ -36,7 +41,7 @@ const ContentScroller = () => {
 
 const Section = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div style={{ }} className="absolute overflow-hidden w-full transition-height duration-200 ease-in h-dvh flex items-center justify-center">
+        <div style={{}} className="absolute overflow-hidden w-full transition-height duration-200 ease-in h-dvh flex items-center justify-center">
             {children}
         </div>
     )

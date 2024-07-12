@@ -6,10 +6,13 @@ import ProjectScroller, { projectCount } from "./Scroller";
 import Image from "next/image";
 
 const Projects = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => {
-    const opacity = useTransform(scrollYProgress, [0.6, 0.7], [0, 1]);
+    const opacity = useTransform(scrollYProgress, [0.6, 0.7, 0.8, 0.9], [0, 1, 1, 0]);
     const translateX = useTransform(scrollYProgress, [0.55, 0.7], [1000, 0]);
     const pointerEvents = useTransform(scrollYProgress, (pos) => {
-        return pos < 0.6 ? "none" : "all";
+        if (pos < 0.6) return "none";
+        if (pos > 0.9) return "none";
+
+        return "all";
     });
 
     const projectsOpacity = useTransform(scrollYProgress, [0.75, 0.77], [0, 1]);

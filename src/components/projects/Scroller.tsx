@@ -39,7 +39,7 @@ const ProjectCard = ({ title, description, image }: { title: string, description
     return (
         <motion.div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={{}} className="relative origin-center z-10 min-w-full h-full flex flex-col items-end justify-start overflow-hidden">
             <div className="w-full z-0 rounded-3xl h-full relative">
-                <Image className="object-cover" src={image} alt="csharp" layout="fill" objectFit="cover" />
+                <Image className="object-cover" src={image} alt="csharp" fill objectFit="cover" />
             </div>
             <div className="flex z-10 flex-col p-4">
                 <p className="z-10 text-2xl md:text-5xl font-bold w-full">{title}</p>

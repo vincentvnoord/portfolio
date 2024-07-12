@@ -12,7 +12,6 @@ export default function Home() {
   return (
     <main className="bg-background transition-colors duration-500 ease-in-out min-h-dvh w-full flex flex-col items-center justify-center gap-8">
       <Header />
-
       <Hero />
       <ContentScroller />
 

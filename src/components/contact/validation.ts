@@ -2,8 +2,8 @@ import { FieldValues } from "react-hook-form";
 import { z } from "zod";
 
 export const ContactFormSchema = z.object({
-    name: z.string().min(2, { message: "Name is too short." }).max(50, { message: "Name is too long." }),
-    email: z.string().email({ message: "Invalid email address." }),
+    name: z.string().min(1, { message: "Name is required." }).min(2, { message: "Name is too short." }).max(50, { message: "Name is too long." }),
+    email: z.string().min(1, { message: "Email is required." }).email({ message: "Invalid email address." }),
     message: z.string().min(10, "Message needs atleast 10 characters.").max(500, { message: "Message is too long." }),
 });
 

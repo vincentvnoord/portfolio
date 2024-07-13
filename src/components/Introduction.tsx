@@ -24,6 +24,7 @@ export const Introduction = ({ scrollYProgress }: { scrollYProgress: MotionValue
             <ColorfulContainer
                 colors={{ center: "bg-secondary", right: "bg-accent" }}
                 className="shadow-xl"
+                outerClassName="p-3"
             >
                 <div className="w-full z-20 relative md:text-center flex flex-col justify-center items-center gap-3 max-w-screen-sm lg:max-w-screen-md p-2 md:p-9">
                     <p className="text-2xl md:text-4xl">Hi I&apos;m Vincent. Nice to meet you.</p>

@@ -2,7 +2,7 @@
 
 import { Nixie_One } from "next/font/google";
 import React, { useEffect, useRef, useState } from "react";
-import { AnimatePresence, AnimationControls, motion, useAnimation, } from "framer-motion";
+import { AnimatePresence, AnimationControls, motion, useAnimation, useScroll, } from "framer-motion";
 import { EntryTextAnimation } from "./Animation";
 import { ShinyButton } from "../ShinyButton";
 
@@ -15,6 +15,10 @@ export const EntryText = () => {
     const bigStyle = "text-2xl md:text-5xl [1500]:text-7xl font-bold text-nowrap";
     const smallStyle = `${nixie.className} md:text-3xl xl:text-5xl`;
     const [textVisible, setTextVisible] = useState(false);
+
+    const onClick = () => {
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+    }
 
     return (
         <div className="cursor-default z-10 flex flex-col p-5 items-center relative">
@@ -43,7 +47,7 @@ export const EntryText = () => {
                     <div className="pt-3">
                         <p className="text-sm text-center lg:text-left lg:text-xl opacity-80">I build seamless backends and frontends. Lets create something great.</p>
                     </div>
-                    <ShinyButton title="GET IN TOUCH" />
+                    <ShinyButton onClick={onClick} title="GET IN TOUCH" />
                 </div>
             </div>
 

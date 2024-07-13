@@ -41,7 +41,7 @@ const Projects = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> })
             </div>
 
             <motion.div animate={containerAnim}>
-                <ColorfulContainer className="origin-center max-h-[700px] shadow-lg relative p-3 flex justify-center overflow-hidden">
+                <ColorfulContainer outerClassName="p-3" className="origin-center max-h-[700px] shadow-lg relative p-3 flex justify-center overflow-hidden">
                     <motion.div
                         style={{ translateX, pointerEvents: "none" }}
                         className="font-extrabold pointer-events-none grid text-center text-5xl sm:text-8xl md:text-9xl"

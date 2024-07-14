@@ -14,7 +14,7 @@ export async function submitFormAction(fieldValues: FieldValues) {
     const { name, email, message } = res.data;
 
     const data = {
-        sender: { email, name },
+        sender: { email: process.env.EMAIL_TO, name },
         to: [{ email: process.env.EMAIL_TO, name: "Vincent" }],
         subject: `New message from ${name}`,
         textContent: message,

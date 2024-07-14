@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon, LoaderCircle, LoaderPinwheelIcon, SendIcon, XIcon } from "lucide-react";
+import { CheckIcon, LoaderCircle, SendIcon, XIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import React, { SetStateAction, useEffect, useState } from "react";
 import { MotionValue, motion, useTransform } from "framer-motion";
@@ -10,7 +10,6 @@ import { FieldValues, FormProvider, useForm, useFormContext } from "react-hook-f
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EmailInput, MessageInput, NameInput } from "./Inputs";
 import { submitFormAction } from "./submitAction";
-import { useFormState, useFormStatus } from "react-dom";
 
 type SubmissionResult = "error" | "success" | null;
 
@@ -38,7 +37,7 @@ const ContactForm = ({ scrollYProgress }: { scrollYProgress: MotionValue<number>
             //formMethods.reset();
         } else {
             setSubmissionResult("error");
-            res.errors.forEach((err) => {
+            res.errors?.forEach((err) => {
                 setError(err.path[0] as keyof TContactForm, { message: err.message });
             });
         }

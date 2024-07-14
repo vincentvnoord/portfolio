@@ -4,7 +4,7 @@ import { CheckIcon, LoaderCircle, SendIcon, XIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import React, { SetStateAction, useEffect, useState } from "react";
 import { MotionValue, motion, useTransform } from "framer-motion";
-import { entryAnimations } from "./animations";
+import { useEntryAnimations } from "./animations";
 import { ContactFormSchema, TContactForm } from "./validation";
 import { FieldValues, FormProvider, useForm, useFormContext } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,7 +21,7 @@ const ContactForm = ({ scrollYProgress }: { scrollYProgress: MotionValue<number>
     const { setError } = formMethods;
     const [submissionResult, setSubmissionResult] = useState<SubmissionResult>(null);
 
-    const { titleAnimation, nameAnimation, emailAnimation, sendButtonAnimation } = entryAnimations(scrollYProgress);
+    const { titleAnimation, nameAnimation, emailAnimation, sendButtonAnimation } = useEntryAnimations(scrollYProgress);
     const pointerEvents = useTransform(scrollYProgress, (pos) => {
         if (pos < 0.9) return "none";
         return "all";

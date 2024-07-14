@@ -1,6 +1,6 @@
 import { useAnimation, useMotionValueEvent, MotionValue } from "framer-motion";
 
-function entryAnimations(scrollYProgress: MotionValue<number>) {
+function useEntryAnimations(scrollYProgress: MotionValue<number>) {
     let inView = false;
     const titleAnimation = useAnimation();
     const nameAnimation = useAnimation();
@@ -69,4 +69,4 @@ function entryAnimations(scrollYProgress: MotionValue<number>) {
     return { titleAnimation, nameAnimation, emailAnimation, sendButtonAnimation };
 }
 
-export { entryAnimations }
+export { useEntryAnimations }

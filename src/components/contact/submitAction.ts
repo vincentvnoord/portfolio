@@ -11,6 +11,24 @@ export async function submitFormAction(fieldValues: FieldValues) {
         return res;
     }
 
+    try {
+        const captchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `secret=${process.env.NEXT_PRIVATE_RECAPTCHA_KEY}&response=${fieldValues.captcha}`
+        });
+        const response = await captchaRes.json();
+        console.log(response);
+        if (!response.success) {
+            return ({ success: false, errors: [{ message: "Error validating captcha", path: ["captcha"] }] });
+        }
+    } catch (e: any) {
+        console.log(e.message);
+        return ({ success: false, errors: [{ message: "Error validating captcha", path: ["captcha"] }] });
+    }
+
     const { name, email, message } = res.data;
 
     const data = {

@@ -5,6 +5,7 @@ export const ContactFormSchema = z.object({
     name: z.string().min(1, { message: "Name is required." }).min(2, { message: "Name is too short." }).max(50, { message: "Name is too long." }),
     email: z.string().min(1, { message: "Email is required." }).email({ message: "Invalid email address." }),
     message: z.string().min(10, "Message needs atleast 10 characters.").max(500, { message: "Message is too long." }),
+    captcha: z.string({ message: "Please complete the captcha." }).min(1, { message: "Please complete the captcha." })
 });
 
 export type TContactForm = z.infer<typeof ContactFormSchema>;

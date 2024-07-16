@@ -3,15 +3,19 @@
 import { CheckIcon, LoaderCircle, SendIcon, XIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import React, { SetStateAction, useEffect, useState } from "react";
-import { MotionValue, motion, useTransform } from "framer-motion";
+import { AnimationControls, MotionValue, motion, useTransform } from "framer-motion";
 import { useEntryAnimations } from "./animations";
 import { ContactFormSchema, TContactForm } from "./validation";
 import { FieldValues, FormProvider, useForm, useFormContext } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EmailInput, MessageInput, NameInput } from "./Inputs";
 import { submitFormAction } from "./submitAction";
+import Captcha from "react-google-recaptcha";
+import { useTheme } from "next-themes";
+
 
 type SubmissionResult = "error" | "success" | null;
+const public_captcha_key = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const ContactForm = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => {
     const formMethods = useForm<TContactForm>({
@@ -26,9 +30,9 @@ const ContactForm = ({ scrollYProgress }: { scrollYProgress: MotionValue<number>
         if (pos < 0.9) return "none";
         return "all";
     });
+    const opacity = useTransform(scrollYProgress, [0.9, 0.92], [0, 1]);
 
     const handleSend = async (data: FieldValues) => {
-        console.log("Sending message");
         const res = await submitFormAction(data);
 
         if (res.success) {
@@ -52,12 +56,13 @@ const ContactForm = ({ scrollYProgress }: { scrollYProgress: MotionValue<number>
                         <div className="flex flex-col gap-2 w-full">
                             <NameInput animate={nameAnimation} />
                             <EmailInput animate={emailAnimation} />
+                            <ReCaptcha animate={sendButtonAnimation} className="hidden md:flex" />
                         </div>
 
-
-                        <div className="flex flex-col gap-3 w-full justify-between">
+                        <div className="flex flex-col gap-3 w-full justify-center items-center">
                             <MessageInput animate={emailAnimation} />
-                            <motion.div animate={sendButtonAnimation} initial={{ y: "100%", opacity: 0 }} className="w-full flex items-center">
+                            <ReCaptcha animate={sendButtonAnimation} className="md:hidden justify-center items-center" />
+                            <motion.div animate={sendButtonAnimation} initial={{ y: "100%", opacity: 0 }} className="w-full flex">
                                 <SubmissionMessage submissionResult={submissionResult} />
                                 <SubmitButton submissionResult={submissionResult} setSubmissionResult={setSubmissionResult} />
                             </motion.div>
@@ -66,6 +71,37 @@ const ContactForm = ({ scrollYProgress }: { scrollYProgress: MotionValue<number>
 
                 </form>
             </FormProvider>
+        </motion.div>
+    )
+}
+
+const ReCaptcha = ({ className, animate }: { className?: string, animate: AnimationControls }) => {
+    const { theme } = useTheme();
+    const { setValue, formState: { errors } } = useFormContext();
+    const error = errors.captcha?.message?.toString();
+    const themeColor = theme === "dark" ? "dark" : "light";
+
+    const variants = {
+        hidden: { height: 0 },
+        visible: { height: "auto" }
+    }
+
+    const errorColors = {
+        center: "bg-destructive/50"
+    }
+
+    const onChange = (value: string | null) => {
+        setValue("captcha", value);
+    }
+
+    useEffect(() => { }, [theme]);
+
+    return (
+        <motion.div animate={animate} initial={{ y: "100%", opacity: 0 }} className={`w-full flex flex-col justify-center ${className}`}>
+            <Captcha sitekey={public_captcha_key!} onChange={onChange} theme={themeColor} />
+            <motion.p variants={variants} transition={{ duration: 0.5, ease: "easeInOut" }} animate={error ? "visible" : "hidden"} initial={{ height: 0 }} className="pr-3 pl-3 text-secondary-foreground font-normal overflow-hidden">
+                {error}
+            </motion.p>
         </motion.div>
     )
 }

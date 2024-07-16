@@ -2,14 +2,9 @@ import { motion, useAnimation, MotionValue } from "framer-motion";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { ShinyButton } from "../ShinyButton";
+import Link from "next/link";
+import { projects } from "./constants";
 
-const projects = [
-    { title: "Luisterkyn", description: "A web-app created for customers to order on the public pages, and the admin to view and respond to the orders.", image: "/csharp.png" },
-    { title: "test", description: "A web-app created for customers to order on the public pages, and the admin to view and respond to the orders.", image: "/mysql.png" },
-    { title: "Test2", description: "A web-app created for customers to order on the public pages, and the admin to view and respond to the orders.", image: "/csharp.png" },
-]
-
-export const projectCount = projects.length;
 
 const ProjectScroller = ({ pointerEvents, opacity, currentProject }: { pointerEvents: MotionValue<"none" | "all">, opacity: MotionValue<number>, currentProject: number }) => {
     const { title, description, image } = projects[currentProject];
@@ -38,7 +33,7 @@ const ProjectCard = ({ title, description, image }: { title: string, description
 
     return (
         <motion.div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={{}} className="relative origin-center z-10 min-w-full h-full flex flex-col items-end justify-start overflow-hidden">
-            <div className="w-full z-0 rounded-3xl h-full relative">
+            <div className="w-full z-0 rounded-3xl h-full relative overflow-hidden">
                 <Image className="object-cover" src={image} alt="csharp" fill objectFit="cover" />
             </div>
             <div className="flex z-10 flex-col p-4">
@@ -48,7 +43,9 @@ const ProjectCard = ({ title, description, image }: { title: string, description
                 </motion.div>
 
                 <motion.div initial={{ opacity: 0 }} animate={backgroundAnim} className="z-20 absolute flex w-full h-full top-0 left-0 pt-12 md:items-center justify-center">
-                    <Button className="bg-primary text-2xl md:text-4xl md:p-12 font-bold">VIEW PROJECT</Button>
+                    <Link href={title.toLowerCase()}>
+                        <Button className="bg-primary text-2xl md:text-4xl md:p-12 font-bold">VIEW PROJECT</Button>
+                    </Link>
                 </motion.div>
 
             </div>

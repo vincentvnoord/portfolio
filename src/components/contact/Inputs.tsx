@@ -53,7 +53,7 @@ export const MessageInput = ({ animate }: { animate: AnimationControls }) => {
     }
 
     return (
-        <motion.div className="origin-bottom-left" initial={{ opacity: 0 }} animate={animate}>
+        <motion.div className="origin-bottom-left w-full" initial={{ opacity: 0 }} animate={animate}>
             <ColorfulContainer colors={error ? errorColors : { center: "bg-yellow-100", left: "bg-pink-500" }} className="z-30 p-[10px]">
                 <textarea {...register("message")}
                     disabled={isSubmitSuccessful || isSubmitting}

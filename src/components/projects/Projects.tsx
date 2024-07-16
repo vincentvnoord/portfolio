@@ -2,7 +2,8 @@ import { MotionValue, motion, useAnimation, useMotionValueEvent, useTransform } 
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import React, { useState } from "react";
 import { ColorfulContainer } from "../ColorContainer";
-import ProjectScroller, { projectCount } from "./Scroller";
+import ProjectScroller from "./Scroller";
+import { projectCount } from "./constants";
 import Image from "next/image";
 
 const Projects = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => {
@@ -36,9 +37,11 @@ const Projects = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> })
 
     return (
         <motion.div style={{ opacity, pointerEvents }} className="flex-col w-full max-w-screen-lg items-center justify-center">
-            <div className="hidden">
-                <ScrollArrow opacity={projectsOpacity} handleScroll={handleScroll} />
-            </div>
+            {projectCount > 0 &&
+                <div className="hidden">
+                    <ScrollArrow opacity={projectsOpacity} handleScroll={handleScroll} />
+                </div>
+            }
 
             <motion.div animate={containerAnim}>
                 <ColorfulContainer outerClassName="p-3" className="origin-center max-h-[700px] shadow-lg relative p-3 flex justify-center overflow-hidden">
@@ -54,14 +57,20 @@ const Projects = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> })
 
                 </ColorfulContainer>
             </motion.div>
-            <div className="hidden">
-                <ScrollArrow dir={1} opacity={projectsOpacity} handleScroll={handleScroll} />
-            </div>
 
-            <div className=" w-full flex justify-evenly">
-                <ScrollArrow opacity={projectsOpacity} handleScroll={handleScroll} />
-                <ScrollArrow dir={1} opacity={projectsOpacity} handleScroll={handleScroll} />
-            </div>
+            {projectCount > 0 &&
+                <div className="hidden">
+                    <ScrollArrow dir={1} opacity={projectsOpacity} handleScroll={handleScroll} />
+                </div>
+            }
+
+            {projectCount > 0 &&
+                <div className=" w-full flex justify-evenly">
+                    <ScrollArrow opacity={projectsOpacity} handleScroll={handleScroll} />
+                    <ScrollArrow dir={1} opacity={projectsOpacity} handleScroll={handleScroll} />
+                </div>
+            }
+
         </motion.div>
     );
 };

@@ -9,7 +9,7 @@ export default function Luisterkyn() {
             </div>
             <div className="flex flex-col gap-3">
                 <Section header="The Goal">
-                    The "Luisterkind Methode" is a dutch method for communicating with someone's inner child, this is why the website is also in Dutch.
+                    The &quot;Luisterkind Methode&quot; is a dutch method for communicating with someone&apos;s inner child, this is why the website is also in Dutch.
                     I made this project for a client who wanted to have a website for her Luisterkind practice.
                     The site serves two main purposes: allowing people to find her practice and enabling them to order a reading directly from the website.
                 </Section>
@@ -28,7 +28,7 @@ export default function Luisterkyn() {
                 </Section>
 
                 <Section header="My Process">
-                    
+
                 </Section>
             </div>
         </div>

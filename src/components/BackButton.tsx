@@ -10,7 +10,7 @@ export default function BackButton() {
     }
 
     return (
-        <div onClick={handleClick} className="flex h-fit justify-center items-center justify-self-start">
+        <div onClick={handleClick} className="flex cursor-pointer h-fit justify-center items-center justify-self-start">
             <ChevronLeft size={60} />
             <p className="text-sm font-bold">BACK TO HOME</p>
         </div>

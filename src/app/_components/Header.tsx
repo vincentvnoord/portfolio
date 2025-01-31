@@ -26,8 +26,8 @@ export const Header = () => {
 
     return (
         <motion.header initial={{ paddingTop: "5rem" }} animate={isScrolled ? { paddingTop: "2rem" } : { paddingTop: "5rem" }} className="w-full flex justify-center z-50 top-0 max-w-screen-lg sticky pt-20 text-nowrap">
-            <motion.div animate={isScrolled ? { borderWidth: 2 } : { borderWidth: 0 }} transition={{ duration: 0.2 }} className="flex border-primary p-2 backdrop-blur-lg bg-background/30 rounded-3xl justify-center items-center gap-5">
-                <motion.div initial={{ width: 100, height: 100 }} animate={isScrolled ? { width: 50, height: 50 } : { width: 100, height: 100 }} className="h-32 w-32 flex-shrink-0 relative rounded-3xl overflow-hidden">
+            <motion.div animate={isScrolled ? { borderWidth: 1 } : { borderWidth: 0 }} transition={{ duration: 0.2 }} className="flex flex-col md:flex-row border-primary p-2 backdrop-blur-lg bg-background/30 rounded-3xl justify-center items-center gap-5">
+                <motion.div initial={{ width: 150, height: 150 }} animate={isScrolled ? { width: 50, height: 50 } : { width: 150, height: 150 }} className="h-32 w-32 flex-shrink-0 relative rounded-3xl overflow-hidden">
                     <Image src="/pfp.jpeg" alt="Vincent van Noord" className="object-cover" fill />
                 </motion.div>
 
@@ -40,15 +40,14 @@ export const Header = () => {
 
                 </motion.div>
 
-                <motion.div initial={{ fontSize: "1.25rem" }} animate={isScrolled ? { fontSize: "1rem" } : { fontSize: "1.25rem" }} className="flex gap-4 text-xl font-semibold text-secondary-foreground/50 p-3 pl-1">
+                <motion.div initial={{ fontSize: "1.25rem" }} animate={isScrolled ? { fontSize: "1rem" } : { fontSize: "1.25rem" }} className="hidden lg:flex gap-4 text-xl items-center font-semibold text-secondary-foreground/50 pl-1">
                     <Link href="/over-mij">OVER MIJ</Link>
                     <Link href="/">PROJECTEN</Link>
                     <Link href="/">CONTACT</Link>
+                    <div className="flex items-center">
+                        <ModeToggle />
+                    </div>
                 </motion.div>
-
-                <div className="justify-self-end flex items-center">
-                    <ModeToggle />
-                </div>
             </motion.div>
         </motion.header >
     )

@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className + " min-h-dvh bg-background w-full flex justify-center"}>
+      <body className={inter.className + " min-h-dvh bg-background w-full flex flex-col"}>
         <ThemeProvider attribute="class" defaultTheme="light">
           {children}
         </ThemeProvider>

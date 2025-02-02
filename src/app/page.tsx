@@ -10,9 +10,56 @@ import { Header } from "./_components/Header";
 
 export default function Home() {
   return (
-    <main className="bg-background transition-colors duration-500 ease-in-out w-full flex flex-col items-center p-8 pt-0 gap-16">
+    <main className="bg-background relative overflow-x-clip w-full flex flex-col items-center">
       <Header />
 
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+      <p>Test</p>
+    </main>
+  );
+}
+
+
+const bla = () => {
+  return (
+    <>
       <section className="w-full gap-3 flex flex-col items-start max-w-screen-md">
         <h1 className="text-5xl leading-[1] font-bold text-primary">Digitale oplossingen die jouw bedrijf doet groeien.</h1>
         <p className="text-secondary-foreground/60">
@@ -39,7 +86,6 @@ export default function Home() {
           <Preview title="Luisterkyn" description="Een webwinkel om digitale diensten te bestellen" image="/projects/luisterkyn/luisterkyn-hero.png" />
         </div>
       </section>
-    </main>
-  );
+    </>
+  )
 }
-
